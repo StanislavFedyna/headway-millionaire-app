@@ -1,0 +1,44 @@
+.mobileMenu {
+  display: none;
+}
+
+.menuButton {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 50;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-white-100);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--color-black-100);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-white-100);
+  transition: transform 0.3s ease-in-out;
+  z-index: 40;
+  padding-top: 7.2rem;
+}
+
+.menuOverlay.open {
+  transform: translateX(-100%);
+}
+
+@media (max-width: 768px) {
+  .mobileMenu {
+    display: block;
+  }
+}
+

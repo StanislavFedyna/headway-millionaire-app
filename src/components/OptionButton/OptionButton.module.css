@@ -1,0 +1,173 @@
+.button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.wrapper {
+  position: relative;
+  flex: 1;
+  width: 100%;
+}
+
+.svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.svg path {
+  fill: white;
+  stroke: var(--color-black-40);
+  transition: all 0.3s ease-in-out;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 20px 24px;
+  gap: 8px;
+  z-index: 1;
+}
+
+.prefix {
+  font-weight: 600;
+  font-size: 14px;
+  min-width: 24px;
+  transition: color 0.3s ease-in-out;
+  color: var(--color-orange-100);
+}
+
+.label {
+  font-size: 1.4rem;
+  font-weight: var(--fw-400);
+  transition: color 0.3s ease-in-out;
+}
+
+.divider {
+  width: 17px;
+  height: 1px;
+  background-color: var(--color-black-40);
+  transition: background-color 0.3s ease-in-out;
+  flex-shrink: 0;
+}
+
+/* Inactive state */
+.inactive .label {
+  color: var(--color-black-100);
+}
+
+.inactive:hover:not(.disabled) .svg path {
+  stroke: var(--color-orange-120);
+  fill: #fff5eb;
+}
+
+.inactive:hover:not(.disabled) .divider {
+  background-color: var(--color-orange-120);
+}
+
+.inactive:hover:not(.disabled) .prefix {
+  color: var(--color-orange-120);
+}
+
+/* Selected state */
+.selected .svg path {
+  fill: #fff5eb;
+  stroke: var(--color-orange-120);
+}
+
+.selected .divider {
+  background-color: var(--color-orange-120);
+}
+
+.selected .prefix,
+.selected .label {
+  color: var(--color-orange-120);
+}
+
+/* Correct state */
+.correct .svg path {
+  fill: #f0fdf4;
+  stroke: var(--color-green-100);
+}
+
+.correct .divider {
+  background-color: var(--color-green-100);
+}
+
+.correct .prefix,
+.correct .label {
+  color: var(--color-green-100);
+}
+
+.correct:hover .svg path {
+  fill: #f0fdf4;
+  stroke: var(--color-green-100);
+}
+
+/* Wrong state */
+.wrong .svg path {
+  fill: #fef2f2;
+  stroke: var(--color-red-100);
+}
+
+.wrong .divider {
+  background-color: var(--color-red-100);
+}
+
+.wrong .prefix,
+.wrong .label {
+  color: var(--color-red-100);
+}
+
+.wrong:hover .svg path {
+  fill: #fef2f2;
+  stroke: var(--color-red-100);
+}
+
+/* Disabled state */
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Animations */
+@keyframes reveal {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.correct,
+.wrong {
+  animation: reveal 0.3s ease-out forwards;
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: 2.4rem 3.2rem;
+  }
+
+  .prefix {
+    font-size: 2.0rem;
+  }
+
+  .label {
+    font-size: 2.0rem;
+  }
+}
