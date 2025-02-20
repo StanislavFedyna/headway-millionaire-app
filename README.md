@@ -1,36 +1,150 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <img src="https://www.nintendo.com/eu/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_WhoWantsToBeAMillionaire_UK_image1600w.jpg" alt="Who Wants to Be a Millionaire Logo" width="50%" height="50%"/>
 
-## Getting Started
+# Who Wants to Be a Millionaire 🎮
 
-First, run the development server:
+[![Next.js](https://img.shields.io/badge/Next.js-15.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19.0-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![Storybook](https://img.shields.io/badge/Storybook-7.0-ff69b4?style=for-the-badge&logo=storybook)](https://storybook.js.org/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+An interactive quiz game built with modern web technologies
+
+[Demo on Versel](headway-millionaire-app.vercel.app) | [Documentation](#documentation) | [Contributing](#contributing)
+
+  ---
+</div>
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18.0 or later
+- npm 9.0 or later
+
+### Installation
+
+1. Clone the repository
+```shellscript
+git clone https://github.com/your-username/how-to-become-a-millionaire.git
+cd how-to-become-a-millionaire
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```shellscript
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Create a `.env.local` file in the root directory and add required environment variables:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```shellscript
+NEXT_PUBLIC_API_URL=your_api_url_here
+```
 
-## Learn More
+### Running the Application
+#### Development Mode
 
-To learn more about Next.js, take a look at the following resources:
+```shellscript
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The application will be available at `http://localhost:3000`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### Production Build
 
-## Deploy on Vercel
+```shellscript
+npm run build
+npm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Storybook
+To run the component library:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```shellscript
+npm run storybook
+```
+Storybook will be available at `http://localhost:6006`
+
+## 🎮 Game Features
+
+- 12 increasingly difficult questions
+- Multiple choice answers
+- Progressive money rewards
+- Responsive design for all devices
+- Beautiful animations and transitions
+- Accessibility support
+
+## 🏗️ Project Structure
+
+```plaintext
+src/
+├── app/              # Next.js app directory
+├── assets/              # Static assets
+├── components/       # Reusable components
+├── config/       # Configuration files
+├── constants/       # Constants
+├── contexts/         # React contexts
+├── hooks/           # Custom hooks
+├── lib/             # Utilities and configurations
+├── schemas/          # Zod schemas
+└── types/           # TypeScript types
+└── utils/           # Utility functions
+```
+
+## 🧪 Testing
+Run the test suite:
+
+```shellscript
+# Run tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+
+# Run tests in watch mode
+npm run test:watch
+```
+
+## 🔧 Available Scripts
+| Command             | Description                   |
+|---------------------|-------------------------------|
+| `npm run dev`       | Starts the development server |
+| `npm run build`     | Creates a production build    |
+| `npm start`         | Runs the production server    |
+| `npm run lint`      | Runs ESLint                   |
+| `npm run storybook` | Starts Storybook              |
+| `npm test`          | Runs tests                    |
+
+## 📚 Documentation
+
+### Component Library
+
+Our components are documented using Storybook. Each component includes:
+
+- Usage examples
+- Props documentation
+- Interactive playground
+- Accessibility information
+
+### 👷‍Architecture
+
+The application follows these key principles:
+
+- Component-based architecture
+- State management with React Context
+- Type safety with TypeScript
+- Server-side rendering with Next.js
+- Responsive design with CSS Modules
+
+## 📝 Code Style
+
+We use:
+
+- ESLint for code linting
+- Prettier for code formatting
+- Husky for pre-commit hooks
+- Commitlint for commit message linting
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
