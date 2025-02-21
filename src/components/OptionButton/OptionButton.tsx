@@ -9,7 +9,7 @@ import { BUTTON_VARIANTS } from '@/constants';
 
 type ButtonVariant = (typeof BUTTON_VARIANTS)[keyof typeof BUTTON_VARIANTS];
 
-interface OptionButton extends ComponentPropsWithoutRef<'button'> {
+interface OptionButtonProps extends ComponentPropsWithoutRef<'button'> {
   children: ReactNode;
   variant?: ButtonVariant;
   prefix?: string;
@@ -24,7 +24,7 @@ export const OptionButton = ({
   className,
   disabled,
   ...props
-}: OptionButton) => {
+}: OptionButtonProps) => {
   const isPressed = variant === BUTTON_VARIANTS.SELECTED;
   const ariaLabel = `Option ${prefix}: ${typeof children === 'string' ? children : ''}`;
 
