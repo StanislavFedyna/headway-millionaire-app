@@ -37,7 +37,7 @@ const GameOverScreen = () => {
         <div className={styles.content}>
           <ThumpUpIcon className={styles.icon} />
 
-          <div className={styles.textContent}>
+          <div className={styles.bodyContent}>
             <Typography variant="h2" className={styles.totalScore}>
               Total score:
             </Typography>

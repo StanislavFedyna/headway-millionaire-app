@@ -8,12 +8,32 @@ import { useGame } from '@/context';
 const ACTION_DELAY = 1500;
 
 interface UseAnswerHandlingProps {
+  /** Current question data */
   question: Question;
+  /** Flag indicating if there is a next question */
   hasNextQuestion: boolean;
+  /** Callback for handling progression to next question */
   onNextQuestion: (moneyValue: Question['moneyValue']) => void;
+  /** Callback for handling game over state */
   onGameOver: (moneyValue: Question['moneyValue']) => void;
 }
 
+/**
+ * Custom hook for handling answer selection and validation logic
+ *
+ * @param props - Configuration options for answer handling
+ * @returns Object containing answer handling state and functions
+ *
+ * @example
+ * ```tsx
+ * const { selectedAnswers, isRevealed, handleAnswerSelect } = useAnswerHandling({
+ *   question,
+ *   hasNextQuestion: true,
+ *   onNextQuestion,
+ *   onGameOver
+ * });
+ * ```
+ */
 export const useAnswerHandling = ({
   question,
   hasNextQuestion,
@@ -24,6 +44,9 @@ export const useAnswerHandling = ({
   const [isRevealed, setIsRevealed] = useState(false);
   const { onWrongAnswer } = useGame();
 
+  /**
+   * Checks if a specific answer is correct
+   */
   const isAnswerCorrect = (answerId: Answer['id']) => {
     return (
       question.answers.find((answer) => answer.id === answerId)?.isCorrect ??
@@ -31,6 +54,9 @@ export const useAnswerHandling = ({
     );
   };
 
+  /**
+   * Validates if all selected answers are correct and match the required count
+   */
   const areAllAnswersCorrect = (userAnswers: string[]) => {
     return (
       userAnswers.every(isAnswerCorrect) &&
@@ -38,6 +64,10 @@ export const useAnswerHandling = ({
     );
   };
 
+  /**
+   * Effect for handling answer validation and game progression
+   * Triggers after reveal animation and handles correct/incorrect answer scenarios
+   */
   const handleAnswerCheck = (userAnswers: string[]) => {
     if (userAnswers.length !== question.minCorrectAnswersCount) return;
 
@@ -45,14 +75,12 @@ export const useAnswerHandling = ({
 
     if (areAllAnswersCorrect(userAnswers)) {
       if (hasNextQuestion) {
-        // Next Question
         setTimeout(() => {
           setSelectedAnswers([]);
           setIsRevealed(false);
           onNextQuestion(question.moneyValue);
         }, ACTION_DELAY);
       } else {
-        // Correct answer to the last questions
         setTimeout(() => {
           onGameOver(question.moneyValue);
 
@@ -63,7 +91,6 @@ export const useAnswerHandling = ({
       return;
     }
 
-    // Handle wrong answer
     setTimeout(() => {
       onWrongAnswer();
 
@@ -71,6 +98,9 @@ export const useAnswerHandling = ({
     }, ACTION_DELAY);
   };
 
+  /**
+   * Handles answer selection and triggers validation when required number of answers is selected
+   */
   const handleAnswerSelect = (answerId: string) => {
     if (isRevealed) return;
 
