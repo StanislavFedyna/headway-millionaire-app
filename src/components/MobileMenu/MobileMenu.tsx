@@ -33,7 +33,7 @@ export const MobileMenu = ({ questionIndex, moneyValues }: MobileMenuProps) => {
     document.addEventListener('keydown', handleEscape);
 
     return () => document.removeEventListener('keydown', handleEscape);
-  }, [isOpen, toggleMenu]);
+  }, [isOpen]);
 
   return (
     <div className={styles.mobileMenu}>
