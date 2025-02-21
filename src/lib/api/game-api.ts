@@ -2,7 +2,7 @@ import gameConfigData from '@/config/game-config.json';
 import { GameConfig, GameConfigSchema } from '@/schemas';
 
 export class ValidationError extends Error {
-  constructor(public errors: Array<{ path: string; message: string }>) {
+  constructor(public errors: { path: string; message: string }[]) {
     super('Validation Error');
     this.name = 'ValidationError';
   }

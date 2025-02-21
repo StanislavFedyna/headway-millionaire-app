@@ -6,6 +6,7 @@ import { MoneyProgress } from '@/components';
 import { Question } from '@/schemas';
 
 import styles from './MoneyProgressList.module.css';
+import { PROGRESS_VARIANTS } from '@/constants';
 
 interface MoneyProgressListProps {
   questionIndex: number;
@@ -20,14 +21,14 @@ const getProgressVariant = (
   currentIndex: number,
 ): ProgressVariant => {
   if (index === currentIndex) {
-    return 'current';
+    return PROGRESS_VARIANTS.CURRENT;
   }
 
   if (index < currentIndex) {
-    return 'completed';
+    return PROGRESS_VARIANTS.COMPLETED;
   }
 
-  return 'next';
+  return PROGRESS_VARIANTS.NEXT;
 };
 
 export const MoneyProgressList = ({

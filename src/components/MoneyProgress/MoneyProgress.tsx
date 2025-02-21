@@ -1,10 +1,14 @@
 import clsx from 'clsx';
-import styles from './MoneyProgress.module.css';
+
 import { formatCurrency } from '@/utils';
 import { Typography } from '@/components';
 import BorderIcon from '@/assets/svgs/border.svg';
+import { PROGRESS_VARIANTS } from '@/constants';
 
-type ProgressVariant = 'completed' | 'current' | 'next';
+import styles from './MoneyProgress.module.css';
+
+export type ProgressVariant =
+  (typeof PROGRESS_VARIANTS)[keyof typeof PROGRESS_VARIANTS];
 
 interface MoneyProgressProps {
   amount: number;
@@ -14,7 +18,7 @@ interface MoneyProgressProps {
 
 export const MoneyProgress = ({
   amount,
-  variant = 'next',
+  variant = PROGRESS_VARIANTS.NEXT,
   className,
 }: MoneyProgressProps) => {
   const formattedAmount = formatCurrency(amount);

@@ -5,8 +5,9 @@ import { Typography } from '@/components';
 import BorderIcon from '@/assets/svgs/border.svg';
 
 import styles from './OptionButton.module.css';
+import { BUTTON_VARIANTS } from '@/constants';
 
-type ButtonVariant = 'inactive' | 'selected' | 'correct' | 'wrong';
+type ButtonVariant = (typeof BUTTON_VARIANTS)[keyof typeof BUTTON_VARIANTS];
 
 interface OptionButton extends ComponentPropsWithoutRef<'button'> {
   children: ReactNode;
@@ -24,7 +25,7 @@ export const OptionButton = ({
   disabled,
   ...props
 }: OptionButton) => {
-  const isPressed = variant === 'selected';
+  const isPressed = variant === BUTTON_VARIANTS.SELECTED;
   const ariaLabel = `Option ${prefix}: ${typeof children === 'string' ? children : ''}`;
 
   return (

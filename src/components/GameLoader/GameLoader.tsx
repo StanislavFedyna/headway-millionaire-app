@@ -7,11 +7,12 @@ interface GameLoaderProps {
 }
 
 export const GameLoader = ({ className }: GameLoaderProps) => (
-  <div
+  <section
     className={styles.container}
     role="alert"
     aria-busy="true"
     aria-live="polite"
+    aria-label="Game content is loading"
   >
     <div className={clsx(styles.wrapper, className)}>
       <div className={styles.hexagon} aria-hidden="true">
@@ -21,7 +22,7 @@ export const GameLoader = ({ className }: GameLoaderProps) => (
           <div className={styles.sparkle} />
         </div>
       </div>
-      <p className={styles.text}>Loading game content...</p>
+      <p className={styles.text}>Loading game content ...</p>
     </div>
-  </div>
+  </section>
 );

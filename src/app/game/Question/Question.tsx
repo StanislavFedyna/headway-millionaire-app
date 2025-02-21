@@ -4,6 +4,7 @@ import { Question as QuestionType } from '@/schemas';
 import styles from './Question.module.css';
 import { useGame } from '@/context';
 import { useAnswerHandling } from '@/hooks';
+import { BUTTON_VARIANTS } from '@/constants';
 
 interface QuestionProps {
   question: QuestionType;
@@ -26,10 +27,14 @@ export const Question = ({ question }: QuestionProps) => {
 
   const getAnswerVariant = (answerId: string) => {
     if (!isRevealed) {
-      return selectedAnswers.includes(answerId) ? 'selected' : 'inactive';
+      return selectedAnswers.includes(answerId)
+        ? BUTTON_VARIANTS.SELECTED
+        : BUTTON_VARIANTS.INACTIVE;
     }
 
-    return isAnswerCorrect(answerId) ? 'correct' : 'wrong';
+    return isAnswerCorrect(answerId)
+      ? BUTTON_VARIANTS.CORRECT
+      : BUTTON_VARIANTS.WRONG;
   };
 
   return (
