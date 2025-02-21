@@ -1,11 +1,14 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
-import { Typography } from '@/components';
 import clsx from 'clsx';
+
+import { Typography } from '@/components';
+import BorderIcon from '@/assets/svgs/border.svg';
+
 import styles from './OptionButton.module.css';
 
 type ButtonVariant = 'inactive' | 'selected' | 'correct' | 'wrong';
 
-interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
+interface OptionButton extends ComponentPropsWithoutRef<'button'> {
   children: ReactNode;
   variant?: ButtonVariant;
   prefix?: string;
@@ -20,32 +23,33 @@ export const OptionButton = ({
   className,
   disabled,
   ...props
-}: ButtonProps) => {
+}: OptionButton) => {
+  const isPressed = variant === 'selected';
+  const ariaLabel = `Option ${prefix}: ${typeof children === 'string' ? children : ''}`;
+
   return (
     <button
       type="button"
+      aria-pressed={isPressed}
+      aria-label={ariaLabel}
+      disabled={!!disabled}
       className={clsx(
         styles.button,
         styles[variant],
         disabled && styles.disabled,
         className,
       )}
-      disabled={!!disabled}
       {...props}
     >
-      <span className={styles.divider} />
+      <span className={styles.divider} aria-hidden="true" />
+
       <div className={styles.wrapper}>
-        <svg
-          viewBox="0 -1 388.55 73"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          className={styles.svg}
-        >
-          <path d="M23.8137 5.09773C25.9857 2.2033 29.3933 0.5 33.012 0.5H355.988C359.607 0.5 363.014 2.2033 365.186 5.09773L388.375 36L365.186 66.9023C363.014 69.7967 359.607 71.5 355.988 71.5H33.012C29.3933 71.5 25.9857 69.7967 23.8137 66.9023L0.625116 36L23.8137 5.09773Z" />
-        </svg>
+        <BorderIcon className={styles.svg} aria-hidden="true" />
+
         <div className={styles.content}>
-          <span className={styles.prefix}>{prefix}</span>
+          <span className={styles.prefix} aria-hidden="true">
+            {prefix}
+          </span>
           <Typography
             className={clsx(styles.label, styles[`label-${variant}`])}
             variant="body"
@@ -54,7 +58,8 @@ export const OptionButton = ({
           </Typography>
         </div>
       </div>
-      <span className={styles.divider} />
+
+      <span className={styles.divider} aria-hidden="true" />
     </button>
   );
 };

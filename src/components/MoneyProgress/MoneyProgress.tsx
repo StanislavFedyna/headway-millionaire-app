@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import styles from './MoneyProgress.module.css';
 import { formatCurrency } from '@/utils';
 import { Typography } from '@/components';
+import BorderIcon from '@/assets/svgs/border.svg';
 
 type ProgressVariant = 'completed' | 'current' | 'next';
 
@@ -18,24 +19,31 @@ export const MoneyProgress = ({
 }: MoneyProgressProps) => {
   const formattedAmount = formatCurrency(amount);
 
+  // status for screen readers
+  const status = {
+    completed: 'Completed level',
+    current: 'Current level',
+    next: 'Next level',
+  }[variant];
+
   return (
-    <div className={clsx(styles.wrapper, styles[variant], className)}>
-      <span className={styles.divider} />
-      <div className={styles.progress}>
-        <svg
-          viewBox="0 -1 388.55 73"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          className={styles.svg}
-        >
-          <path d="M23.8137 5.09773C25.9857 2.2033 29.3933 0.5 33.012 0.5H355.988C359.607 0.5 363.014 2.2033 365.186 5.09773L388.375 36L365.186 66.9023C363.014 69.7967 359.607 71.5 355.988 71.5H33.012C29.3933 71.5 25.9857 69.7967 23.8137 66.9023L0.625116 36L23.8137 5.09773Z" />
-        </svg>
+    <div
+      className={clsx(styles.wrapper, styles[variant], className)}
+      role="listitem"
+      aria-current={variant === 'current'}
+    >
+      <span className={styles.divider} aria-hidden="true" />
+      <div
+        className={styles.progress}
+        role="status"
+        aria-label={`${status}: ${formattedAmount}`}
+      >
+        <BorderIcon className={styles.svg} aria-hidden="true" />
         <Typography className={styles.amount} variant="body">
           {formattedAmount}
         </Typography>
       </div>
-      <span className={styles.divider} />
+      <span className={styles.divider} aria-hidden="true" />
     </div>
   );
 };

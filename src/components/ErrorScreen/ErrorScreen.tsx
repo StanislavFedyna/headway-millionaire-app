@@ -12,15 +12,17 @@ export const ErrorScreen = ({ onRetry, error }: ErrorScreenProps) => {
   const isValidationError = error instanceof ValidationError;
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container} role="alert">
       <div className={styles.content}>
-        <div className={styles.hexagon}>
+        <div className={styles.hexagon} aria-hidden="true">
           <div className={styles.inner}>
-            <span className={styles.mark}>!</span>
+            <span className={styles.mark} aria-hidden="true">
+              !
+            </span>
           </div>
         </div>
 
-        <Typography variant="h2" className={styles.title}>
+        <Typography variant="h2" className={styles.title} aria-live="assertive">
           {isValidationError
             ? 'Invalid Game Configuration'
             : 'Game loading error'}
@@ -46,10 +48,15 @@ export const ErrorScreen = ({ onRetry, error }: ErrorScreenProps) => {
           </Typography>
         )}
 
-        <Button onClick={onRetry} className={styles.button}>
+        <Button
+          onClick={onRetry}
+          className={styles.button}
+          aria-label="Retry loading the game"
+          aria-describedby="error-description"
+        >
           Try again
         </Button>
       </div>
-    </div>
+    </section>
   );
 };

@@ -7,8 +7,6 @@ import { useAnswerHandling } from '@/hooks';
 
 interface QuestionProps {
   question: QuestionType;
-  // moneyValues: any;
-  // questionIndex: number;
 }
 
 const getLetterByIndex = (index: number): string => {

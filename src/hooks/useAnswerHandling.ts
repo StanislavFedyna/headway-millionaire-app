@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 
 import { PAGE_URLS } from '@/constants';
 import { Answer, Question } from '@/schemas';
+import { useGame } from '@/context';
 
 const ACTION_DELAY = 1500;
 
@@ -21,6 +22,7 @@ export const useAnswerHandling = ({
 }: UseAnswerHandlingProps) => {
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [isRevealed, setIsRevealed] = useState(false);
+  const { onWrongAnswer } = useGame();
 
   const isAnswerCorrect = (answerId: Answer['id']) => {
     return (
@@ -41,22 +43,31 @@ export const useAnswerHandling = ({
 
     setIsRevealed(true);
 
-    if (areAllAnswersCorrect(userAnswers) && hasNextQuestion) {
-      setTimeout(() => {
-        setSelectedAnswers([]);
-        setIsRevealed(false);
+    if (areAllAnswersCorrect(userAnswers)) {
+      if (hasNextQuestion) {
+        // Next Question
+        setTimeout(() => {
+          setSelectedAnswers([]);
+          setIsRevealed(false);
+          onNextQuestion(question.moneyValue);
+        }, ACTION_DELAY);
+      } else {
+        // Correct answer to the last questions
+        setTimeout(() => {
+          onGameOver(question.moneyValue);
 
-        onNextQuestion(question.moneyValue);
-      }, ACTION_DELAY);
+          redirect(PAGE_URLS.GAME_OVER);
+        }, ACTION_DELAY);
+      }
+
       return;
     }
 
-    onGameOver(question.moneyValue);
-
+    // Handle wrong answer
     setTimeout(() => {
-      redirect(PAGE_URLS.GAME_OVER);
+      onWrongAnswer();
 
-      // onGameOver(question.moneyValue);
+      redirect(PAGE_URLS.GAME_OVER);
     }, ACTION_DELAY);
   };
 

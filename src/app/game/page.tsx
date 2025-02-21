@@ -25,21 +25,25 @@ const GamePage = () => {
     );
   }
 
-  // const moneyValues = useMoneyValues(config);
-  // console.log('g', arr);
+  const moneyValues = config.questions
+    .map((question) => question.moneyValue)
+    .sort((a, b) => a - b);
 
   const currentQuestion = config.questions[questionIndex];
 
   return (
-    <div className={styles.container}>
-      <MobileMenu questionIndex={questionIndex} />
+    <main className={styles.container}>
+      <MobileMenu questionIndex={questionIndex} moneyValues={moneyValues} />
 
       <Question question={currentQuestion} />
 
       <aside className={styles.sidebar}>
-        <MoneyProgressList questionIndex={questionIndex} />
+        <MoneyProgressList
+          questionIndex={questionIndex}
+          moneyValues={moneyValues}
+        />
       </aside>
-    </div>
+    </main>
   );
 };
 

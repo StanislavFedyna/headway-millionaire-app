@@ -6,3 +6,4 @@ export { GameLoader } from './GameLoader/GameLoader';
 export { MobileMenu } from './MobileMenu/MobileMenu';
 export { OptionButton } from './OptionButton/OptionButton';
 export { ErrorScreen } from './ErrorScreen/ErrorScreen';
+export { ErrorBoundary } from './ErrorBoundary/ErrorBoundary';

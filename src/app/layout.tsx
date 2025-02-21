@@ -5,6 +5,7 @@ import { GameProvider } from '@/context';
 
 import './globals.css';
 import { QueryProvider } from '@/lib/providers/query-provider';
+import { ErrorBoundary } from '@/components';
 
 export const metadata: Metadata = {
   title: 'How to become a millionaire',
@@ -18,9 +19,11 @@ interface RootLayoutProps {
 const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
   <html lang="en">
     <body>
-      <QueryProvider>
-        <GameProvider>{children}</GameProvider>
-      </QueryProvider>
+      <ErrorBoundary>
+        <QueryProvider>
+          <GameProvider>{children}</GameProvider>
+        </QueryProvider>
+      </ErrorBoundary>
     </body>
   </html>
 );
