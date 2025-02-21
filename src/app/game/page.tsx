@@ -10,6 +10,7 @@ import { MoneyProgressList } from './MoneyProgressList/MoneyProgressList';
 import styles from './page.module.css';
 
 const GamePage = () => {
+  console.log('GamePage!!!!!');
   const { questionIndex } = useGame();
   const { config, isLoading, error, refetch } = useGameConfig();
 
