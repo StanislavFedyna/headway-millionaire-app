@@ -1,5 +1,6 @@
 {
   "name": "how-to-become-a-millionaire",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,9 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test": "vitest",
     "prepare": "husky",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -39,13 +38,15 @@
     "@storybook/nextjs": "^8.5.8",
     "@storybook/react": "^8.5.8",
     "@storybook/test": "^8.5.8",
+    "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
     "conventional-changelog-atom": "^5.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
@@ -53,11 +54,14 @@
     "eslint-plugin-storybook": "^0.11.3",
     "husky": "^9.1.7",
     "jest": "^29.7.0",
+    "jsdom": "^26.0.0",
     "lint-staged": "^15.4.3",
     "prettier": "^3.5.1",
     "storybook": "^8.5.8",
     "ts-jest": "^29.2.5",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.0.6"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
