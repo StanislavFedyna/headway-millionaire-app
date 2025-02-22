@@ -1,3 +1,4 @@
+import React from 'react';
 import clsx from 'clsx';
 
 import { formatCurrency } from '@/utils';
@@ -33,7 +34,7 @@ export const MoneyProgress = ({
     <div
       className={clsx(styles.wrapper, styles[variant], className)}
       role="listitem"
-      aria-current={variant === 'current'}
+      aria-current={variant === PROGRESS_VARIANTS.CURRENT}
     >
       <span className={styles.divider} aria-hidden="true" />
       <div

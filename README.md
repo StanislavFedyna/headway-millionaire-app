@@ -7,6 +7,11 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19.0-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![Storybook](https://img.shields.io/badge/Storybook-7.0-ff69b4?style=for-the-badge&logo=storybook)](https://storybook.js.org/)
+[![Vitest](https://img.shields.io/badge/vitest-3.0-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
+[![ESLint](https://img.shields.io/badge/ESLint-8.0-4b32c3?style=for-the-badge&logo=eslint)](https://eslint.org/)
+[![Prettier](https://img.shields.io/badge/Prettier-2.4-f7b93e?style=for-the-badge&logo=prettier)](https://prettier.io/)
+[![Husky](https://img.shields.io/badge/Husky-7.0-ff69b4?style=for-the-badge&logo=husky)](https://typicode.github.io/husky/#/)
+[![Commitlint](https://img.shields.io/badge/Commitlint-13.1-ff69b4?style=for-the-badge&logo=commitlint)](https://commitlint.js.org/)
 
 An interactive quiz game built with modern web technologies
 
@@ -33,12 +38,6 @@ cd how-to-become-a-millionaire
 2. Install dependencies
 ```shellscript
 npm install
-```
-
-3. Create a `.env.local` file in the root directory and add required environment variables:
-
-```shellscript
-NEXT_PUBLIC_API_URL=your_api_url_here
 ```
 
 ### Running the Application

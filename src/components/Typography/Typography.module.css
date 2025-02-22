@@ -1,25 +1,26 @@
 .h1 {
   font-weight: var(--fw-600);
   font-size: 5.6rem;
-  line-height: 64px;
+  line-height: 6.4rem;
   color: var(--color-black-100);
 }
 
 .h2 {
   font-weight: var(--fw-600);
   font-size: 3.2rem;
-  line-height: 37px;
+  line-height: 3.7rem;
 }
 
 .body {
   font-weight: var(--fw-400);
   font-size: 2.0rem;
-  line-height: 23px;
+  line-height: 2.3rem;
 }
 
 @media (max-width: 768px) {
   .h1 {
     font-size: 3.2rem;
+    line-height: 3.7rem;
   }
 
   .h2 {
