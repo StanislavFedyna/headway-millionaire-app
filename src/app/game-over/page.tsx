@@ -3,13 +3,12 @@
 import { useEffect } from 'react';
 import { redirect } from 'next/navigation';
 
-import { Button, Typography } from '@/components';
+import { Button, Typography, PageWrapper } from '@/components';
 import { useGame } from '@/context';
 import { PAGE_URLS } from '@/constants';
 import ThumpUpIcon from '../../assets/svgs/thumb-up.svg';
 import styles from './page.module.css';
 import { useConfetti } from '@/hooks';
-import { PageWrapper } from '@/components/PageWrapper/PageWrapper';
 
 const GameOverScreen = () => {
   const { isGameOver, onGameReset, total, maxPrize } = useGame();
