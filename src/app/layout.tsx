@@ -2,10 +2,9 @@ import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 
 import { GameProvider } from '@/context';
-
-import './globals.css';
-import { QueryProvider } from '@/lib/providers/query-provider';
 import { ErrorBoundary } from '@/components';
+import { QueryProvider } from '@/lib/providers/query-provider';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'How to become a millionaire',

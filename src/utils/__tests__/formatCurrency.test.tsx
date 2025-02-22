@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { formatCurrency } from '../formatCurrency';
+
+import { formatCurrency } from '@/utils';
 
 describe('formatCurrency', () => {
   it('formats regular numbers correctly', () => {

@@ -1,6 +1,5 @@
 import { ValidationError } from '@/lib/api/game-api';
 import { Button, Typography } from '@/components';
-
 import styles from './ErrorScreen.module.css';
 
 interface ErrorScreenProps {
@@ -30,17 +29,15 @@ export const ErrorScreen = ({ onRetry, error }: ErrorScreenProps) => {
 
         {isValidationError ? (
           <div className={styles.validationErrors}>
-            {(error as ValidationError).errors.map(
-              ({ path, message }, index) => (
-                <Typography
-                  key={index}
-                  variant="body"
-                  className={styles.errorItem}
-                >
-                  <span className={styles.errorPath}>{path}:</span> {message}
-                </Typography>
-              ),
-            )}
+            {(error as ValidationError).errors.map(({ path, message }) => (
+              <Typography
+                key={`${path}-${message}`}
+                variant="body"
+                className={styles.errorItem}
+              >
+                <span className={styles.errorPath}>{path}:</span> {message}
+              </Typography>
+            ))}
           </div>
         ) : (
           <Typography variant="body" className={styles.description}>

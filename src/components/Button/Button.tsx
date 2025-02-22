@@ -11,7 +11,7 @@ export const Button = ({ children, className, ...rest }: ButtonProps) => {
   const buttonClassName = clsx(styles.button, className);
 
   return (
-    <button className={buttonClassName} {...rest}>
+    <button type="button" className={buttonClassName} {...rest}>
       {children}
     </button>
   );

@@ -6,9 +6,7 @@ import { redirect } from 'next/navigation';
 import { AnimationContainer, Button, Typography } from '@/components';
 import { useGame } from '@/context';
 import { PAGE_URLS } from '@/constants';
-
 import ThumpUpIcon from '../../assets/svgs/thumb-up.svg';
-
 import styles from './page.module.css';
 
 const GameOverScreen = () => {

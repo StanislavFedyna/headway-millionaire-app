@@ -3,7 +3,6 @@ import clsx from 'clsx';
 
 import { Typography } from '@/components';
 import BorderIcon from '@/assets/svgs/border.svg';
-
 import styles from './OptionButton.module.css';
 import { BUTTON_VARIANTS } from '@/constants';
 
@@ -19,7 +18,7 @@ interface OptionButtonProps extends ComponentPropsWithoutRef<'button'> {
 
 export const OptionButton = ({
   children,
-  variant = 'inactive',
+  variant = BUTTON_VARIANTS.INACTIVE,
   prefix = '',
   className,
   disabled,

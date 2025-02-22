@@ -3,10 +3,9 @@
 import clsx from 'clsx';
 
 import { MoneyProgress } from '@/components';
-import { Question } from '@/schemas';
-
-import styles from './MoneyProgressList.module.css';
 import { PROGRESS_VARIANTS } from '@/constants';
+import { Question } from '@/schemas';
+import styles from './MoneyProgressList.module.css';
 
 interface MoneyProgressListProps {
   questionIndex: number;

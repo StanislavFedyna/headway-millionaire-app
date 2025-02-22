@@ -1,6 +1,7 @@
 'use client';
 
 import { Component, type ErrorInfo, type ReactNode } from 'react';
+
 import { ErrorScreen } from '@/components';
 
 interface Props {
@@ -13,36 +14,44 @@ interface State {
 }
 
 export class ErrorBoundary extends Component<Props, State> {
-  public state: State = {
-    hasError: false,
-    error: null,
-  };
+  constructor(props: Props) {
+    super(props);
 
-  public static getDerivedStateFromError(error: Error): State {
+    this.state = {
+      hasError: false,
+      error: null,
+    };
+  }
+
+  static getDerivedStateFromError(error: Error): State {
     return {
       hasError: true,
       error,
     };
   }
 
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('Uncaught error:', error, errorInfo);
   }
 
-  private handleRetry = () => {
+  private handleRetry = (): void => {
+    this.setState({ hasError: false, error: null });
     window.location.reload();
   };
 
-  public render() {
-    if (this.state.hasError) {
+  render() {
+    const { hasError, error } = this.state;
+    const { children } = this.props;
+
+    if (hasError) {
       return (
         <ErrorScreen
-          error={this.state.error || new Error('Something went wrong')}
+          error={error || new Error('Something went wrong')}
           onRetry={this.handleRetry}
         />
       );
     }
 
-    return this.props.children;
+    return children;
   }
 }

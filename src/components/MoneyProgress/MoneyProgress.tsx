@@ -4,7 +4,6 @@ import { formatCurrency } from '@/utils';
 import { Typography } from '@/components';
 import BorderIcon from '@/assets/svgs/border.svg';
 import { PROGRESS_VARIANTS } from '@/constants';
-
 import styles from './MoneyProgress.module.css';
 
 export type ProgressVariant =

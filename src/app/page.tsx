@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { AnimationContainer, Button, Typography } from '@/components';
 import { PAGE_URLS } from '@/constants';
 import ThumpUpIcon from '@/assets/svgs/thumb-up.svg';
-
 import styles from './page.module.css';
 
 const Start = () => {

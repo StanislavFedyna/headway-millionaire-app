@@ -2,7 +2,7 @@
 
 import type React from 'react';
 import { redirect } from 'next/navigation';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useMemo, useState } from 'react';
 
 import { Question } from '@/schemas';
 import { useGameConfig } from '@/hooks';
@@ -116,21 +116,20 @@ export const GameProvider = ({ children }: GameProviderProps) => {
     setIsGameOver(true);
   };
 
-  return (
-    <GameContext.Provider
-      value={{
-        total,
-        questionIndex,
-        isGameOver,
-        onNextQuestion,
-        onGameReset,
-        onGameOver,
-        onWrongAnswer,
-      }}
-    >
-      {children}
-    </GameContext.Provider>
+  const values = useMemo(
+    () => ({
+      total,
+      questionIndex,
+      isGameOver,
+      onNextQuestion,
+      onGameReset,
+      onGameOver,
+      onWrongAnswer,
+    }),
+    [isGameOver, onNextQuestion, onWrongAnswer, questionIndex, total],
   );
+
+  return <GameContext.Provider value={values}>{children}</GameContext.Provider>;
 };
 
 export const useGame = () => {

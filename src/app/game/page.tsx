@@ -3,14 +3,12 @@
 import { GameLoader, ErrorScreen } from '@/components';
 import { useGameConfig } from '@/hooks';
 import { useGame } from '@/context';
-
 import { Question } from './Question/Question';
 import { MobileMenu } from './MobileMenu/MobileMenu';
 import { MoneyProgressList } from './MoneyProgressList/MoneyProgressList';
 import styles from './page.module.css';
 
 const GamePage = () => {
-  console.log('GamePage!!!!!');
   const { questionIndex } = useGame();
   const { config, isLoading, error, refetch } = useGameConfig();
 

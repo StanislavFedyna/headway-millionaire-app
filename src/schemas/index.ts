@@ -1,3 +1,3 @@
-export type * from '../schemas/game.schema';
+export type { Answer, Question, GameConfig } from './game.schema';
 
-export { GameConfigSchema } from '../schemas/game.schema';
+export { GameConfigSchema, AnswerSchema, QuestionSchema } from './game.schema';

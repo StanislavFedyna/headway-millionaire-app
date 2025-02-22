@@ -1,10 +1,9 @@
 import { Typography, OptionButton } from '@/components';
 import { Question as QuestionType } from '@/schemas';
-
-import styles from './Question.module.css';
 import { useGame } from '@/context';
 import { useAnswerHandling } from '@/hooks';
 import { BUTTON_VARIANTS } from '@/constants';
+import styles from './Question.module.css';
 
 interface QuestionProps {
   question: QuestionType;

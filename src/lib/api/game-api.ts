@@ -10,7 +10,9 @@ export class ValidationError extends Error {
 
 export const fakeGameApi = {
   getConfig: async (): Promise<GameConfig> => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => {
+      setTimeout(resolve, 1000);
+    });
 
     const result = GameConfigSchema.safeParse(gameConfigData);
 
