@@ -17,7 +17,7 @@
 
 An interactive quiz game built with modern web technologies
 
-[Demo on Versel](headway-millionaire-app.vercel.app) | [Documentation](#documentation) | [Contributing](#contributing)
+[Demo on Versel](https://vercel.com/pstanislav07-gmailcoms-projects/headway-millionaire-app)
 
   ---
 </div>
