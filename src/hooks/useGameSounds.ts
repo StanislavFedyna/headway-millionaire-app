@@ -57,29 +57,8 @@ export const useGameSounds = () => {
     [audioElements, isSoundEnabled],
   );
 
-  const stopSound = useCallback(
-    (type: SoundType) => {
-      const audio = audioElements[type];
-      if (audio) {
-        audio.pause();
-        audio.currentTime = 0;
-      }
-    },
-    [audioElements],
-  );
-
-  const stopAllSounds = useCallback(() => {
-    Object.values(audioElements).forEach((audio) => {
-      audio.pause();
-      // eslint-disable-next-line no-param-reassign
-      audio.currentTime = 0;
-    });
-  }, [audioElements]);
-
   return {
     playSound,
-    stopSound,
-    stopAllSounds,
     isSoundEnabled,
     toggleSound,
   };
