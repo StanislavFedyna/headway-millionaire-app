@@ -5,7 +5,9 @@
 
 .score {
   margin-bottom: 6.4rem;
-  word-break: break-word;
-  hyphens: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25em;
 }
 

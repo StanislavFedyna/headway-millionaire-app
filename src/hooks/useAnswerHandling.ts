@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import { PAGE_URLS } from '@/constants';
 import { Answer, Question } from '@/schemas';
 import { useGame } from '@/context';
-import { useGameSounds } from '@/hooks/useGameSounds';
+import { useGameSounds } from '@/hooks';
 
 const ACTION_DELAY = 1500;
 

@@ -3,7 +3,7 @@
 import { Volume2, VolumeX } from 'lucide-react';
 
 import styles from './SoundToggle.module.css';
-import { useGameSounds } from '@/hooks/useGameSounds';
+import { useGameSounds } from '@/hooks';
 
 export const SoundToggle = () => {
   const { isSoundEnabled, toggleSound } = useGameSounds();

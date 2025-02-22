@@ -26,6 +26,8 @@ interface GameContextType {
   onNextQuestion: (moneyValue: Question['moneyValue']) => void;
   /** Callback for handling wrong answer */
   onWrongAnswer: () => void;
+  /** Maximum prize that can be won */
+  maxPrize: number;
 }
 
 /**
@@ -35,7 +37,7 @@ interface GameContextType {
 export const GameContext = createContext<GameContextType | null>(null);
 
 const INITIAL_TOTAL = 0;
-const INITIAL_QUESTION_INDEX = 0;
+const INITIAL_QUESTION_INDEX = 11;
 
 interface GameProviderProps {
   children: React.ReactNode;
@@ -61,6 +63,14 @@ export const GameProvider = ({ children }: GameProviderProps) => {
   const [questionIndex, setQuestionIndex] = useState(INITIAL_QUESTION_INDEX);
   const [total, setTotal] = useState(INITIAL_TOTAL);
   const [isGameOver, setIsGameOver] = useState(false);
+
+  /**
+   * Maximum prize that can be won
+   */
+  const maxPrize = useMemo(() => {
+    if (!config) return 0;
+    return Math.max(...config.questions.map((q) => q.moneyValue));
+  }, [config]);
 
   /**
    * Handles progression to the next question
@@ -125,6 +135,7 @@ export const GameProvider = ({ children }: GameProviderProps) => {
       onGameReset,
       onGameOver,
       onWrongAnswer,
+      maxPrize,
     }),
     [isGameOver, onNextQuestion, onWrongAnswer, questionIndex, total],
   );

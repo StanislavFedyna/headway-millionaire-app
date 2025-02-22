@@ -8,10 +8,14 @@ import { useGame } from '@/context';
 import { PAGE_URLS } from '@/constants';
 import ThumpUpIcon from '../../assets/svgs/thumb-up.svg';
 import styles from './page.module.css';
+import { useConfetti } from '@/hooks';
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper';
 
 const GameOverScreen = () => {
-  const { isGameOver, onGameReset, total } = useGame();
+  const { isGameOver, onGameReset, total, maxPrize } = useGame();
+  const isWinner = total === maxPrize;
+
+  useConfetti(isWinner);
 
   useEffect(() => {
     if (!isGameOver) {
