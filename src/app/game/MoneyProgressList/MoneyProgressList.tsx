@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 
 import { MoneyProgress } from '@/components';
-import { PROGRESS_VARIANTS } from '@/constants';
+import { getProgressVariant } from '@/utils';
 import { Question } from '@/schemas';
 import styles from './MoneyProgressList.module.css';
 
@@ -13,31 +13,17 @@ interface MoneyProgressListProps {
   moneyValues: Question['moneyValue'][];
 }
 
-type ProgressVariant = 'current' | 'next' | 'completed';
-
-const getProgressVariant = (
-  index: number,
-  currentIndex: number,
-): ProgressVariant => {
-  if (index === currentIndex) {
-    return PROGRESS_VARIANTS.CURRENT;
-  }
-
-  if (index < currentIndex) {
-    return PROGRESS_VARIANTS.COMPLETED;
-  }
-
-  return PROGRESS_VARIANTS.NEXT;
-};
-
 export const MoneyProgressList = ({
   questionIndex,
   moneyValues,
   className,
 }: MoneyProgressListProps) => {
   return (
-    <aside className={clsx(styles.container, className)}>
-      <div className={styles.list}>
+    <aside
+      className={clsx(styles.container, className)}
+      aria-label="Progress menu"
+    >
+      <div className={styles.list} aria-label="Progress levels">
         {moneyValues
           .slice()
           .reverse()

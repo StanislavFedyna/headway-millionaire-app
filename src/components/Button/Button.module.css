@@ -9,7 +9,6 @@
   background-color: var(--color-orange-120);
   min-height: 64px;
   width: 296px;
-
   transition:
     background-color 0.3s ease,
     transform 0.3s ease;

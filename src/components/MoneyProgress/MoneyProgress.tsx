@@ -25,9 +25,9 @@ export const MoneyProgress = ({
 
   // status for screen readers
   const status = {
-    completed: 'Completed level',
-    current: 'Current level',
-    next: 'Next level',
+    [PROGRESS_VARIANTS.COMPLETED]: 'Completed level',
+    [PROGRESS_VARIANTS.CURRENT]: 'Current level',
+    [PROGRESS_VARIANTS.NEXT]: 'Next level',
   }[variant];
 
   return (
