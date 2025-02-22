@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 
 import { GameProvider } from '@/context';
-import { ErrorBoundary } from '@/components';
+import { ErrorBoundary, SoundToggle } from '@/components';
 import { QueryProvider } from '@/lib/providers/query-provider';
 import './globals.css';
 
@@ -20,7 +20,10 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
     <body>
       <ErrorBoundary>
         <QueryProvider>
-          <GameProvider>{children}</GameProvider>
+          <GameProvider>
+            <SoundToggle />
+            {children}
+          </GameProvider>
         </QueryProvider>
       </ErrorBoundary>
     </body>

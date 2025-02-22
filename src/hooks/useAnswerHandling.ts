@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import { PAGE_URLS } from '@/constants';
 import { Answer, Question } from '@/schemas';
 import { useGame } from '@/context';
+import { useGameSounds } from '@/hooks/useGameSounds';
 
 const ACTION_DELAY = 1500;
 
@@ -43,6 +44,7 @@ export const useAnswerHandling = ({
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [isRevealed, setIsRevealed] = useState(false);
   const { onWrongAnswer } = useGame();
+  const { playSound } = useGameSounds();
 
   /**
    * Checks if a specific answer is correct
@@ -74,6 +76,8 @@ export const useAnswerHandling = ({
     setIsRevealed(true);
 
     if (areAllAnswersCorrect(userAnswers)) {
+      playSound('correct');
+
       if (hasNextQuestion) {
         setTimeout(() => {
           setSelectedAnswers([]);
@@ -90,7 +94,7 @@ export const useAnswerHandling = ({
 
       return;
     }
-
+    playSound('wrong');
     setTimeout(() => {
       onWrongAnswer();
 

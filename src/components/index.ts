@@ -7,3 +7,4 @@ export { OptionButton } from './OptionButton/OptionButton';
 export { ErrorScreen } from './ErrorScreen/ErrorScreen';
 export { ErrorBoundary } from './ErrorBoundary/ErrorBoundary';
 export { PageWrapper } from './PageWrapper/PageWrapper';
+export { SoundToggle } from './SoundToggle/SoundToggle';
