@@ -12,6 +12,8 @@
 [![Prettier](https://img.shields.io/badge/Prettier-2.4-f7b93e?style=for-the-badge&logo=prettier)](https://prettier.io/)
 [![Husky](https://img.shields.io/badge/Husky-7.0-ff69b4?style=for-the-badge&logo=husky)](https://typicode.github.io/husky/#/)
 [![Commitlint](https://img.shields.io/badge/Commitlint-13.1-ff69b4?style=for-the-badge&logo=commitlint)](https://commitlint.js.org/)
+[![Tanstack Query](https://img.shields.io/badge/Tanstack%20Query-5.0-ff69b4?style=for-the-badge&logo=tanstack)](https://tanstack.com/query/)
+[![Zod](https://img.shields.io/badge/Zod-3.0-ff69b4?style=for-the-badge&logo=zod)](https://zod.dev/)
 
 An interactive quiz game built with modern web technologies
 
@@ -102,6 +104,9 @@ npm run test:coverage
 
 # Run tests in watch mode
 npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
 ```
 
 ## 🔧 Available Scripts
@@ -113,6 +118,8 @@ npm run test:watch
 | `npm run lint`      | Runs ESLint                   |
 | `npm run storybook` | Starts Storybook              |
 | `npm test`          | Runs tests                    |
+| `npm run test:watch`| Runs tests in watch mode      |
+| `npm run test:coverage`| Runs tests with coverage    |
 
 ## 📚 Documentation
 
