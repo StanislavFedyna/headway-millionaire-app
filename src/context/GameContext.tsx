@@ -37,7 +37,7 @@ interface GameContextType {
 export const GameContext = createContext<GameContextType | null>(null);
 
 const INITIAL_TOTAL = 0;
-const INITIAL_QUESTION_INDEX = 11;
+const INITIAL_QUESTION_INDEX = 0;
 
 interface GameProviderProps {
   children: React.ReactNode;
