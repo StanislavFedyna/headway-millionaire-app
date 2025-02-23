@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { useMemo } from 'react';
 
 import { fakeGameApi } from '@/lib';
 import { GameConfig } from '@/schemas';
@@ -9,6 +10,13 @@ import { GameConfig } from '@/schemas';
 export const QUERY_KEYS = {
   gameConfig: ['game-config'],
 } as const;
+
+interface UseGameConfigReturn {
+  config: GameConfig | undefined;
+  isLoading: boolean;
+  error: Error | null;
+  refetch: () => void;
+}
 
 /**
  * Custom hook for fetching and managing game configuration data.
@@ -38,17 +46,34 @@ export const QUERY_KEYS = {
  * - Will not retry failed requests (retry: false)
  * - Returns undefined for config if data is not yet loaded
  */
-export function useGameConfig() {
-  const { data, isLoading, error, refetch } = useQuery<GameConfig>({
+export function useGameConfig(): UseGameConfigReturn {
+  const {
+    data: rawConfig,
+    isLoading,
+    error,
+    refetch,
+  } = useQuery<GameConfig>({
     queryKey: QUERY_KEYS.gameConfig,
     queryFn: fakeGameApi.getConfig,
     retry: false,
   });
 
+  // Sort questions by money value
+  const config = useMemo(() => {
+    if (!rawConfig) return undefined;
+
+    return {
+      ...rawConfig,
+      questions: [...rawConfig.questions].sort(
+        (a, b) => a.moneyValue - b.moneyValue,
+      ),
+    };
+  }, [rawConfig]);
+
   return {
-    config: data,
+    config,
     isLoading,
-    error,
+    error: error as Error | null,
     refetch,
   };
 }
